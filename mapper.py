@@ -35,7 +35,10 @@ for line in sys.stdin:
     data = line.strip().split("\t")
 
     # store the 6 elements of the tuple in seperate variables
-    date, time, item, category, sales, payment = data
+    if len(data) >= 6:
+	date, time, item, category, sales, payment = data
+    else: 
+	raise Exception("Error: Tuple has not the required 6 elements!")
 
     # Write the key-value combination to standard output (stdout)
     # Key is the category, value is the sales     
