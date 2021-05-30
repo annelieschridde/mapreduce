@@ -26,22 +26,26 @@ import sys
 # New Line (\n) indicates a new record
 # Output is writing to the standard output
 
+categories = ['Computers','Cameras', 'Video Games']
+
 # For each new line in the standard input (stdin) 
 for line in sys.stdin:
+	# split the line at the tabulator ("\t")
+ 	# strip removes whitespaces and new lines at the beginning and end of the line
+ 	# the result is a tuple with 6 elements
+     	data = line.strip().split("\t")
 
-    # split the line at the tabulator ("\t")
-    # strip removes whitespaces and new lines at the beginning and end of the line
-    # the result is a tuple with 6 elements
-    data = line.strip().split("\t")
-
-    # store the 6 elements of the tuple in seperate variables
-    if len(data) >= 6:
-	date, time, item, category, sales, payment = data
-    else: 
-	raise Exception("Error: Tuple has not the required 6 elements!")
-
-    # Write the key-value combination to standard output (stdout)
-    # Key is the category, value is the sales     
-    # With a tab (\t) between key and value
-    # New line \n means new record
-    sys.stdout.write("{0}\t{1}\n".format(category, sales))
+  	# store the 6 elements of the tuple in seperate variables
+     	if len(data) >= 6:
+		date, time, item, category, sales, payment = data
+    
+		if category in categories:	
+    		# Write the key-value combination to standard output (stdout)
+    		# Key is the category, value is the sales     
+    		# With a tab (\t) between key and value
+    		# New line \n means new record
+    			sys.stdout.write("{0}\t{1}\n".format(category, sales))
+		else: 
+			pass
+     	else:
+		sys.stdout.write("Error: tuple requires 6 elements!") 
