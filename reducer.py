@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-:wq
+
 import sys
 
 # The input will be in the form of key-value pairs# It is sorted according to the key
